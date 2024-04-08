@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 import uvicorn
 from keras.models import load_model
 import pickle
@@ -11,8 +10,6 @@ import requests
 # Declaring our FastAPI instance
 app = FastAPI()
 
-class request_body(BaseModel):
-    prediction:float
 
 
 @app.get('/')
@@ -28,8 +25,8 @@ def predict():
     scaler=MinMaxScaler(feature_range=(0,1))
     timeinterval=24
     prediction=1
-    predict=[]
-    exchange=[]
+    #predict=[]
+    #exchange=[]
 
     i=0
     testapi='https://api.twelvedata.com/time_series?symbol=BTC/INR&interval=5min&outputsize=273&timezone=Asia/Kolkata&order=ASC&apikey=e76157c75c3a42649e168c5c206e88ca'
@@ -55,7 +52,7 @@ def predict():
     #print(exchangedata)
 
     exchangefinal=exchangedata['rate']
-    exchange.append(exchangefinal)
+    #exchange.append(exchangefinal)
 
 
     lastdata=modelinputs[len(modelinputs)+1-timeinterval:len(modelinputs)+1,0]
@@ -63,9 +60,9 @@ def predict():
     lastdata=np.reshape(lastdata,(1,lastdata.shape[0],1))
     prediction=clf.predict(lastdata)
     prediction=scaler.inverse_transform(prediction)
-    predict.append(prediction[0][0])
-    pre=prediction[0][0]
-    print(pre)
+    #predict.append(prediction[0][0])
+    #pre=prediction[0][0]
+    #print(pre)
     
     return {'message': np.float64(pre) }
  
