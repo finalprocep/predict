@@ -19,7 +19,7 @@ def main():
     return {'message': 'Welcome to GeeksforGeeks!'}
  
 # Defining path operation for root endpoint
-@app.post('/predict')
+@app.get('/predict')
 def predict():
     with open('Model.pkl',"rb") as file:
         clf=pickle.load(file)
