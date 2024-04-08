@@ -47,11 +47,11 @@ def predict():
     prediction_price=clf.predict(x_test)
     prediction_price=scaler.inverse_transform(prediction_price)
 
-    exchangeapi='https://api.twelvedata.com/exchange_rate?symbol=BTC/INR&timezone=Asia/Kolkata&apikey=e76157c75c3a42649e168c5c206e88ca'
-    exchangedata=requests.get(exchangeapi).json()
+    #exchangeapi='https://api.twelvedata.com/exchange_rate?symbol=BTC/INR&timezone=Asia/Kolkata&apikey=e76157c75c3a42649e168c5c206e88ca'
+    #exchangedata=requests.get(exchangeapi).json()
     #print(exchangedata)
 
-    exchangefinal=exchangedata['rate']
+    #exchangefinal=exchangedata['rate']
     #exchange.append(exchangefinal)
 
 
