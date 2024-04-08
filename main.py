@@ -23,7 +23,7 @@ def main():
 @app.get('/predict')
 def predict():
     #with open('Model.pkl',"rb") as file:
-    clf=load_model(Model.pkl)
+    clf=load_model(Model1.pkl)
 
     scaler=MinMaxScaler(feature_range=(0,1))
     timeinterval=24
@@ -32,7 +32,7 @@ def predict():
     exchange=[]
 
     i=0
-    testapi='https://api.twelvedata.com/time_series?symbol=BTC/INR&interval=5min&outputsize=3000&timezone=Asia/Kolkata&order=ASC&apikey=e76157c75c3a42649e168c5c206e88ca'
+    testapi='https://api.twelvedata.com/time_series?symbol=BTC/INR&interval=5min&outputsize=273&timezone=Asia/Kolkata&order=ASC&apikey=e76157c75c3a42649e168c5c206e88ca'
     testdata=requests.get(testapi).json()
     testdatafinal=pd.DataFrame(testdata['values'])
 
