@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
+from keras.models import load_model
 import pickle
 import numpy as np
 import pandas as pd
@@ -21,8 +22,8 @@ def main():
 # Defining path operation for root endpoint
 @app.get('/predict')
 def predict():
-    with open('Model.pkl',"rb") as file:
-        clf=pickle.load(file)
+    #with open('Model.pkl',"rb") as file:
+    clf=load_model(Model.pkl)
 
     scaler=MinMaxScaler(feature_range=(0,1))
     timeinterval=24
